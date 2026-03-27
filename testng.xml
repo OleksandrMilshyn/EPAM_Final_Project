@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Final Project Suite" parallel="tests" thread-count="2">
+
+    <test name="Chrome Tests">
+        <parameter name="browser" value="chrome"/>
+        <packages>
+            <package name="finalProject.tests"/>
+        </packages>
+    </test>
+
+    <test name="Firefox Tests">
+        <parameter name="browser" value="firefox"/>
+        <packages>
+            <package name="finalProject.tests"/>
+        </packages>
+    </test>
+
+</suite>
