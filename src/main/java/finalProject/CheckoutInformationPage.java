@@ -2,7 +2,6 @@ package finalProject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class CheckoutInformationPage extends BasePage{
 
@@ -10,27 +9,27 @@ public class CheckoutInformationPage extends BasePage{
         super(driver);
     }
 
-    public void addFirstName(String firstName){
+    private By firstNameField = By.cssSelector("[id='first-name']");
 
-        WebElement firstNameField = driver.findElement(By.cssSelector("[id='first-name']"));
-        firstNameField.sendKeys(firstName);
+    private By lastNameField = By.cssSelector("[id='last-name']");
+
+    private By postCodeField = By.cssSelector("[id='postal-code']");
+
+    private By continueButton = By.cssSelector("[id='continue']");
+
+    public void addFirstName(String firstName){
+        sendKeys(firstNameField, firstName);
     }
 
     public void addLastName(String lastName){
-
-        WebElement firstNameField = driver.findElement(By.cssSelector("[id='last-name']"));
-        firstNameField.sendKeys(lastName);
+        sendKeys(lastNameField, lastName);
     }
 
     public void addPostCode(String postCode){
-
-        WebElement firstNameField = driver.findElement(By.cssSelector("[id='postal-code']"));
-        firstNameField.sendKeys(postCode);
+        sendKeys(postCodeField, postCode);
     }
 
     public void clickContinue(){
-
-        WebElement continueButton = driver.findElement(By.cssSelector("[id='continue']"));
-        continueButton.click();
+        click(continueButton);
     }
 }

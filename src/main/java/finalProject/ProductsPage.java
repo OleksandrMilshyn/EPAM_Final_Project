@@ -2,7 +2,6 @@ package finalProject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class ProductsPage extends BasePage{
 
@@ -10,22 +9,21 @@ public class ProductsPage extends BasePage{
         super(driver);
     }
 
-    public void addTheFirstProduct(){
+    private By addToCartFirstItemButton = By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']");
 
-        WebElement addToCartButton = driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']"));
-        addToCartButton.click();
+    private By addToCartSecondItemButton = By.cssSelector("[id='add-to-cart-sauce-labs-bike-light']");
+
+    private By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
+
+    public void addTheFirstProduct(){
+        click(addToCartFirstItemButton);
     }
 
     public void addTheSecondProduct(){
-
-        WebElement addToCartButton = driver.findElement(By.cssSelector("[id='add-to-cart-sauce-labs-bike-light']"));
-        addToCartButton.click();
+        click(addToCartSecondItemButton);
     }
 
     public void toCart(){
-
-        WebElement cartButton = driver.findElement(By.cssSelector("[data-test='shopping-cart-link']"));
-        cartButton.click();
+        click(cartButton);
     }
-
 }
