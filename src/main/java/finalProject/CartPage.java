@@ -11,7 +11,8 @@ public class CartPage extends BasePage{
     }
 
     public String getProductName(){
-
+        //TODO if you use inheritance from BasePage, better to encapsulate the driver
+        // in the BasePage and create a method to find element by xpath and reuse it here.
         WebElement name = driver.findElement(By.xpath("//div[text() ='Sauce Labs Backpack']"));
         return name.getText();
     }
