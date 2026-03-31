@@ -8,8 +8,8 @@ public class OrderTest extends BaseTest{
 
     String login = "standard_user";
     String password = "secret_sauce";
-    String expectedName = "Sauce Labs Backpack";
-    String expectedName2 = "Sauce Labs Bike Light";
+    String expectedFirstName = "Sauce Labs Backpack";
+    String expecteSeconddName = "Sauce Labs Bike Light";
     String myFirstName = "OLEKSANDR";
     String myLastName = "MILSHYN";
     String myPostCode = "91-402";
@@ -28,8 +28,8 @@ public class OrderTest extends BaseTest{
         productsPage.toCart();
 
         CartPage cartPage = new CartPage(driver);
-        String actualName = cartPage.getProductName();
-        Assert.assertEquals(actualName, expectedName);
+        String actualName = cartPage.getFirstProductName();
+        Assert.assertEquals(actualName, expectedFirstName);
         cartPage.clickCheckout();
 
         CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage(driver);
@@ -60,10 +60,10 @@ public class OrderTest extends BaseTest{
         productsPage.toCart();
 
         CartPage cartPage = new CartPage(driver);
-        String actualName = cartPage.getProductName();
-        String actualName2 = cartPage.getProductName2();
-        Assert.assertEquals(actualName, expectedName);
-        Assert.assertEquals(actualName2, expectedName2);
+        String actualName = cartPage.getFirstProductName();
+        String actualName2 = cartPage.getSecondProductName();
+        Assert.assertEquals(actualName, expectedFirstName);
+        Assert.assertEquals(actualName2, expecteSeconddName);
         cartPage.clickCheckout();
 
         CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage(driver);

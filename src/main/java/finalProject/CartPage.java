@@ -15,11 +15,11 @@ public class CartPage extends BasePage{
 
     private By checkoutButton = By.cssSelector("[id = 'checkout']");
 
-    public String getProductName(){
+    public String getFirstProductName(){
         return getText(firstItem);
     }
 
-    public String getProductName2(){
+    public String getSecondProductName(){
         return getText(secondItem);
     }
 

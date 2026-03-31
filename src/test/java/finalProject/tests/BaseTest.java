@@ -19,6 +19,8 @@ public class BaseTest {
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
+        } else {
+            throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
 
         driver.manage().window().maximize();
