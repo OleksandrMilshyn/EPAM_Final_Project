@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 
 public class OrderTest extends BaseTest{
 
-    String login = "standard_user";
-    String password = "secret_sauce";
+    String login = ConfigReader.get("login");
+    String password = ConfigReader.get("password");
     String expectedFirstName = "Sauce Labs Backpack";
     String expecteSeconddName = "Sauce Labs Bike Light";
     String myFirstName = "OLEKSANDR";
