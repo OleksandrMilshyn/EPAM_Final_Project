@@ -2,7 +2,6 @@ package finalProject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class CheckoutOverviewPage extends BasePage{
 
@@ -10,31 +9,28 @@ public class CheckoutOverviewPage extends BasePage{
         super(driver);
     }
 
-    public void clickFinishButton(){
+    private By finishButton = By.cssSelector("[id='finish']");
 
-        WebElement finishButton = driver.findElement(By.cssSelector("[id='finish']"));
-        finishButton.click();
+    private By firstPriceField = By.xpath("//div[@data-test='inventory-item-price']");
+
+    private By secondPriceField = By.xpath("(//div/*[@data-test='inventory-item-price'])[2]");
+
+    private By totalSumField = By.cssSelector("[data-test='subtotal-label']");
+
+    public void clickFinishButton(){
+        click(finishButton);
     }
 
     public double sumOfTwoProducts(){
 
-        WebElement firstPriceField = driver.findElement(By.xpath("//div[@data-test='inventory-item-price']"));
-        String text = firstPriceField.getText();
-        text = text.replace("$", "");
-        double firstPrice = Double.parseDouble(text);
+        double firstPrice = Double.parseDouble(getText(firstPriceField).replace("$", ""));
+        double secondPrice = Double.parseDouble(getText(secondPriceField).replace("$", ""));
 
-        WebElement secondPriceField = driver.findElement(By.xpath("(//div/*[@data-test='inventory-item-price'])[2]"));
-        String text2 = secondPriceField.getText();
-        text2 = text2.replace("$", "");
-        double secondPrice = Double.parseDouble(text2);
         return firstPrice + secondPrice;
     }
 
     public double totalSum(){
 
-        WebElement getTotalSumField = driver.findElement(By.cssSelector("[data-test='subtotal-label']"));
-        String text = getTotalSumField.getText();
-        text = text.replace("Item total: $", "");
-        return Double.parseDouble(text);
+        return Double.parseDouble(getText(totalSumField).replace("Item total: $", ""));
     }
 }

@@ -2,7 +2,6 @@ package finalProject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage{
 
@@ -10,21 +9,27 @@ public class LoginPage extends BasePage{
         super(driver);
     }
 
-    public void userName(String login){
+    private By loginField = By.cssSelector("[id ='user-name']");
 
-        WebElement loginField = driver.findElement(By.cssSelector("[id ='user-name']"));
-        loginField.sendKeys(login);
+    private By passwordField = By.xpath("//input[@name = 'password']");
+
+    private By loginButton = By.cssSelector("[id='login-button']");
+
+    public void userName(String login){
+        sendKeys(loginField, login);
     }
 
     public void userPassword(String password){
-
-        WebElement passwordField = driver.findElement(By.xpath("//input[@name = 'password']"));
-        passwordField.sendKeys(password);
+        sendKeys(passwordField, password);
     }
 
-    public void logIn(){
+    private void clickLoginButton(){
+        click(loginButton);
+    }
 
-        WebElement loginButton = driver.findElement(By.cssSelector("[id='login-button']"));
-        loginButton.click();
+    public void login(String name, String password){
+        userName(name);
+        userPassword(password);
+        clickLoginButton();
     }
 }
