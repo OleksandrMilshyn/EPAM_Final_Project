@@ -19,9 +19,7 @@ public class OrderTest extends BaseTest{
     public void verifyOrderOfProduct(){
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.userName(login);
-        loginPage.userPassword(password);
-        loginPage.logIn();
+        loginPage.logIn(login, password);
 
         ProductsPage productsPage = new ProductsPage(driver);
         productsPage.addTheFirstProduct();
@@ -50,9 +48,7 @@ public class OrderTest extends BaseTest{
     public void verifyAddSeveralProducts(){
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.userName(login);
-        loginPage.userPassword(password);
-        loginPage.logIn();
+        loginPage.logIn(login, password);
 
         ProductsPage productsPage = new ProductsPage(driver);
         productsPage.addTheFirstProduct();
@@ -79,6 +75,5 @@ public class OrderTest extends BaseTest{
         CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage(driver);
         String actualFinalText = checkoutCompletePage.getCompleteOrderText();
         Assert.assertEquals(actualFinalText, expectedFinalText);
-
     }
 }

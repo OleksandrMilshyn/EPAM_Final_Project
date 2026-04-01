@@ -23,7 +23,13 @@ public class LoginPage extends BasePage{
         sendKeys(passwordField, password);
     }
 
-    public void logIn(){
+    private void clickLoginButton(){
         click(loginButton);
+    }
+
+    public void logIn(String name, String password){
+        userName(name);
+        userPassword(password);
+        clickLoginButton();
     }
 }
