@@ -17,15 +17,9 @@ public class CheckoutInformationPage extends BasePage{
 
     private By continueButton = By.cssSelector("[id='continue']");
 
-    public void addFirstName(String firstName){
+    public void fillAllFields(String firstName, String lastName, String postCode){
         sendKeys(firstNameField, firstName);
-    }
-
-    public void addLastName(String lastName){
         sendKeys(lastNameField, lastName);
-    }
-
-    public void addPostCode(String postCode){
         sendKeys(postCodeField, postCode);
     }
 

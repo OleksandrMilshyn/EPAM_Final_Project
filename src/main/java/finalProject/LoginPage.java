@@ -27,7 +27,7 @@ public class LoginPage extends BasePage{
         click(loginButton);
     }
 
-    public void logIn(String name, String password){
+    public void login(String name, String password){
         userName(name);
         userPassword(password);
         clickLoginButton();

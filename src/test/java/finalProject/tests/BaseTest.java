@@ -1,6 +1,8 @@
 package finalProject.tests;
 
+import finalProject.ConfigReader;
 import finalProject.DriverFactory;
+import finalProject.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -23,6 +25,10 @@ public class BaseTest {
     @AfterMethod
     public void quitDriver(){
         driver.quit();
+    }
+
+    protected void login(){
+        new LoginPage(driver).login(ConfigReader.get("login"), ConfigReader.get("password"));
     }
 }
 
