@@ -50,6 +50,7 @@ public class OrderTest extends BaseTest{
 
         CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage(driver);
         String actualFinalText = checkoutCompletePage.getCompleteOrderText();
+        //TODO: Ideally we should have only one assertion in the test.
         Assert.assertEquals(actualFinalText, expectedFinalText);
     }
 
