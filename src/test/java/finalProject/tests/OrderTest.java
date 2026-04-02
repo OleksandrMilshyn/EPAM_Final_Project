@@ -4,6 +4,8 @@ import finalProject.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class OrderTest extends BaseTest{
 
     String expectedFirstName = "Sauce Labs Backpack";
@@ -62,10 +64,12 @@ public class OrderTest extends BaseTest{
         productsPage.toCart();
 
         CartPage cartPage = new CartPage(driver);
-        String actualName = cartPage.getFirstProductName();
-        String actualName2 = cartPage.getSecondProductName();
-        Assert.assertEquals(actualName, expectedFirstName);
-        Assert.assertEquals(actualName2, expectedSecondName);
+        String actualFirstName = cartPage.getFirstProductName();
+        String actualSecondName = cartPage.getSecondProductName();
+
+        List<String> actualResult = List.of(actualFirstName, actualSecondName);
+        List<String> expectedResult = List.of(expectedFirstName, expectedSecondName);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test
