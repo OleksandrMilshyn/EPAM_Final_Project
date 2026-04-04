@@ -1,5 +1,6 @@
-package finalProject;
+package finalproject.pages;
 
+import finalproject.utils.DriverManager;
 import org.openqa.selenium.By;
 
 public class CheckoutOverviewPage extends BasePage{

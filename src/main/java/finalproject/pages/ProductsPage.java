@@ -1,7 +1,7 @@
-package finalProject;
+package finalproject.pages;
 
+import finalproject.utils.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class ProductsPage extends BasePage{
 
@@ -15,11 +15,11 @@ public class ProductsPage extends BasePage{
 
     private By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
 
-    public void addTheFirstProduct(){
+    public void addSauceLabsBackpack(){
         click(addToCartFirstItemButton);
     }
 
-    public void addTheSecondProduct(){
+    public void addSauceLabsBikeLight(){
         click(addToCartSecondItemButton);
     }
 

@@ -1,4 +1,4 @@
-package finalProject;
+package finalproject.utils;
 
 import java.io.InputStream;
 import java.util.Properties;

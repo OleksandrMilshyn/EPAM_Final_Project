@@ -1,6 +1,7 @@
-package finalProject.tests;
+package finalproject.tests;
 
-import finalProject.*;
+import finalproject.pages.*;
+import finalproject.utils.DriverManager;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -29,12 +30,12 @@ public class OrderTest{
     }
 
     @Test
-    public void verifyProductPresentInCart(){
+    public void verifyProductPresentInCartTest(){
 
         ProductsPage productsPage = new LoginPage()
                 .loginAsDefaultUser();
 
-        productsPage.addTheFirstProduct();
+        productsPage.addSauceLabsBackpack();
         productsPage.toCart();
 
         CartPage cartPage = new CartPage();
@@ -43,12 +44,12 @@ public class OrderTest{
     }
 
     @Test
-    public void verifyOrderOfProduct(){
+    public void verifyOrderOfProductTest(){
 
         ProductsPage productsPage = new LoginPage()
                 .loginAsDefaultUser();
 
-        productsPage.addTheFirstProduct();
+        productsPage.addSauceLabsBackpack();
         productsPage.toCart();
 
         CartPage cartPage = new CartPage();
@@ -67,13 +68,13 @@ public class OrderTest{
     }
 
     @Test
-    public void verifySeveralProductsInCart(){
+    public void verifySeveralProductsInCartTest(){
 
         ProductsPage productsPage = new LoginPage()
                 .loginAsDefaultUser();
 
-        productsPage.addTheFirstProduct();
-        productsPage.addTheSecondProduct();
+        productsPage.addSauceLabsBackpack();
+        productsPage.addSauceLabsBikeLight();
         productsPage.toCart();
 
         CartPage cartPage = new CartPage();
@@ -86,13 +87,13 @@ public class OrderTest{
     }
 
     @Test
-    public void verifyTotalPrice(){
+    public void verifyTotalPriceTest(){
 
         ProductsPage productsPage = new LoginPage()
                 .loginAsDefaultUser();
 
-        productsPage.addTheFirstProduct();
-        productsPage.addTheSecondProduct();
+        productsPage.addSauceLabsBackpack();
+        productsPage.addSauceLabsBikeLight();
         productsPage.toCart();
 
         CartPage cartPage = new CartPage();
@@ -107,13 +108,13 @@ public class OrderTest{
     }
 
     @Test
-    public void verifyOrderOfSeveralProducts(){
+    public void verifyOrderOfSeveralProductsTest(){
 
         ProductsPage productsPage = new LoginPage()
                 .loginAsDefaultUser();
 
-        productsPage.addTheFirstProduct();
-        productsPage.addTheSecondProduct();
+        productsPage.addSauceLabsBackpack();
+        productsPage.addSauceLabsBikeLight();
         productsPage.toCart();
 
         CartPage cartPage = new CartPage();

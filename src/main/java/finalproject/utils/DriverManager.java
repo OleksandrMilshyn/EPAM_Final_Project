@@ -1,4 +1,4 @@
-package finalProject;
+package finalproject.utils;
 
 import org.openqa.selenium.WebDriver;
 

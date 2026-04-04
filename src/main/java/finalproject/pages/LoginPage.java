@@ -1,5 +1,7 @@
-package finalProject;
+package finalproject.pages;
 
+import finalproject.utils.ConfigReader;
+import finalproject.utils.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
