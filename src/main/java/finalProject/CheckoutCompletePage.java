@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class CheckoutCompletePage extends BasePage{
 
     public CheckoutCompletePage() {
-        super(DriverFactory.getDriver());
+        super(DriverManager.getDriver());
     }
 
     private By completeOrderText = By.xpath("//h2[text() = 'Thank you for your order!']");

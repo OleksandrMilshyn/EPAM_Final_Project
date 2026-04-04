@@ -1,12 +1,11 @@
 package finalProject;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class CheckoutOverviewPage extends BasePage{
 
     public CheckoutOverviewPage(){
-        super(DriverFactory.getDriver());
+        super(DriverManager.getDriver());
     }
 
     private By finishButton = By.cssSelector("[id='finish']");

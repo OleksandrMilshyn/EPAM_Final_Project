@@ -10,41 +10,34 @@ import java.util.Map;
 
 public class DriverFactory {
 
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    public static WebDriver createDriver(String browser){
 
-    public static void initDriver(String browser){
+        switch (browser.toLowerCase()) {
 
-        if (browser.equalsIgnoreCase("chrome")){
-            ChromeOptions options = new ChromeOptions();
+            case "chrome":
+                ChromeOptions options = new ChromeOptions();
 
-            Map<String, Object> prefs = new HashMap<>();
-            prefs.put("credentials_enable_service", false);
-            prefs.put("profile.password_manager_enabled", false);
-            prefs.put("profile.password_manager_leak_detection", false); // ← ВАЖНО
-            options.setExperimentalOption("prefs", prefs);
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put("credentials_enable_service", false);
+                prefs.put("profile.password_manager_enabled", false);
+                prefs.put("profile.password_manager_leak_detection", false);
 
-            options.addArguments("--disable-notifications");
-            options.addArguments("--disable-save-password-bubble");
-            options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerEnabled");
+                options.setExperimentalOption("prefs", prefs);
 
-            options.addArguments("--incognito");
+                options.addArguments("--disable-notifications");
+                options.addArguments("--disable-save-password-bubble");
+                options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerEnabled");
+                options.addArguments("--incognito");
 
-            driver.set(new ChromeDriver(options));
+                return new ChromeDriver(options);
+
+            case "firefox":
+                return new FirefoxDriver();
+
+            default:
+                throw new IllegalArgumentException(
+                        "Unsupported browser: " + browser + " (use chrome or firefox)"
+                );
         }
-        else if (browser.equalsIgnoreCase("firefox")){
-            driver.set(new FirefoxDriver());
-        }
-        else {
-            throw new IllegalArgumentException("Unsupported browser: " + browser + " please use chrome or firefox");
-        }
-    }
-
-    public static WebDriver getDriver(){
-        return driver.get();
-    }
-
-    public static void quitDriver(){
-        driver.get().quit();
-        driver.remove();
     }
 }

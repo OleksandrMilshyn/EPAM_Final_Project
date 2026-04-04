@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class ProductsPage extends BasePage{
 
     public ProductsPage() {
-        super(DriverFactory.getDriver());
+        super(DriverManager.getDriver());
     }
 
     private By addToCartFirstItemButton = By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']");

@@ -2,25 +2,38 @@ package finalProject.tests;
 
 import finalProject.*;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.List;
 
-public class OrderTest extends BaseTest{
+public class OrderTest{
 
     String expectedFirstName = "Sauce Labs Backpack";
     String expectedSecondName = "Sauce Labs Bike Light";
     String myFirstName = "OLEKSANDR";
     String myLastName = "MILSHYN";
-    String myPostCode = "91-402";
+    String myPostCode = "00-444";
     String expectedFinalText = "Thank you for your order!";
+
+    @BeforeMethod
+    @Parameters("browser")
+    public void setUp(String browser) {
+        DriverManager.start(browser);
+        DriverManager.getDriver().manage().window().maximize();
+        DriverManager.getDriver().get("https://www.saucedemo.com/");
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        DriverManager.stop();
+    }
 
     @Test
     public void verifyProductPresentInCart(){
 
-        login();
+        ProductsPage productsPage = new LoginPage()
+                .loginAsDefaultUser();
 
-        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.toCart();
 
@@ -32,9 +45,9 @@ public class OrderTest extends BaseTest{
     @Test
     public void verifyOrderOfProduct(){
 
-        login();
+        ProductsPage productsPage = new LoginPage()
+                .loginAsDefaultUser();
 
-        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.toCart();
 
@@ -56,9 +69,9 @@ public class OrderTest extends BaseTest{
     @Test
     public void verifySeveralProductsInCart(){
 
-        login();
+        ProductsPage productsPage = new LoginPage()
+                .loginAsDefaultUser();
 
-        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.addTheSecondProduct();
         productsPage.toCart();
@@ -75,9 +88,9 @@ public class OrderTest extends BaseTest{
     @Test
     public void verifyTotalPrice(){
 
-        login();
+        ProductsPage productsPage = new LoginPage()
+                .loginAsDefaultUser();
 
-        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.addTheSecondProduct();
         productsPage.toCart();
@@ -96,9 +109,9 @@ public class OrderTest extends BaseTest{
     @Test
     public void verifyOrderOfSeveralProducts(){
 
-        login();
+        ProductsPage productsPage = new LoginPage()
+                .loginAsDefaultUser();
 
-        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.addTheSecondProduct();
         productsPage.toCart();

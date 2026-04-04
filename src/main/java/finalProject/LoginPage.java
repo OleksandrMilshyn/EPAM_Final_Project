@@ -8,7 +8,7 @@ public class LoginPage extends BasePage{
     private WebDriver driver;
 
     public LoginPage() {
-        super(DriverFactory.getDriver());
+        super(DriverManager.getDriver());
     }
 
     private By loginField = By.cssSelector("[id ='user-name']");
@@ -29,9 +29,11 @@ public class LoginPage extends BasePage{
         click(loginButton);
     }
 
-    public void login(String name, String password){
-        userName(name);
-        userPassword(password);
+    public ProductsPage loginAsDefaultUser(){
+        userName(ConfigReader.get("login"));
+        userPassword(ConfigReader.get("password"));
         clickLoginButton();
+
+        return new ProductsPage();
     }
 }
