@@ -20,11 +20,11 @@ public class OrderTest extends BaseTest{
 
         login();
 
-        ProductsPage productsPage = new ProductsPage(driver);
+        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.toCart();
 
-        CartPage cartPage = new CartPage(driver);
+        CartPage cartPage = new CartPage();
         String actualName = cartPage.getFirstProductName();
         Assert.assertEquals(actualName, expectedFirstName);
     }
@@ -34,21 +34,21 @@ public class OrderTest extends BaseTest{
 
         login();
 
-        ProductsPage productsPage = new ProductsPage(driver);
+        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.toCart();
 
-        CartPage cartPage = new CartPage(driver);
+        CartPage cartPage = new CartPage();
         cartPage.clickCheckout();
 
-        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage(driver);
+        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage();
         checkoutInformationPage.fillAllFields(myFirstName, myLastName, myPostCode);
         checkoutInformationPage.clickContinue();
 
-        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage(driver);
+        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage();
         checkoutOverviewPage.clickFinishButton();
 
-        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage(driver);
+        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage();
         String actualFinalText = checkoutCompletePage.getCompleteOrderText();
         Assert.assertEquals(actualFinalText, expectedFinalText);
     }
@@ -58,12 +58,12 @@ public class OrderTest extends BaseTest{
 
         login();
 
-        ProductsPage productsPage = new ProductsPage(driver);
+        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.addTheSecondProduct();
         productsPage.toCart();
 
-        CartPage cartPage = new CartPage(driver);
+        CartPage cartPage = new CartPage();
         String actualFirstName = cartPage.getFirstProductName();
         String actualSecondName = cartPage.getSecondProductName();
 
@@ -77,19 +77,19 @@ public class OrderTest extends BaseTest{
 
         login();
 
-        ProductsPage productsPage = new ProductsPage(driver);
+        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.addTheSecondProduct();
         productsPage.toCart();
 
-        CartPage cartPage = new CartPage(driver);
+        CartPage cartPage = new CartPage();
         cartPage.clickCheckout();
 
-        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage(driver);
+        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage();
         checkoutInformationPage.fillAllFields(myFirstName, myLastName, myPostCode);
         checkoutInformationPage.clickContinue();
 
-        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage(driver);
+        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage();
         Assert.assertEquals(checkoutOverviewPage.sumOfTwoProducts(), checkoutOverviewPage.totalSum());
     }
 
@@ -98,22 +98,22 @@ public class OrderTest extends BaseTest{
 
         login();
 
-        ProductsPage productsPage = new ProductsPage(driver);
+        ProductsPage productsPage = new ProductsPage();
         productsPage.addTheFirstProduct();
         productsPage.addTheSecondProduct();
         productsPage.toCart();
 
-        CartPage cartPage = new CartPage(driver);
+        CartPage cartPage = new CartPage();
         cartPage.clickCheckout();
 
-        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage(driver);
+        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage();
         checkoutInformationPage.fillAllFields(myFirstName, myLastName, myPostCode);
         checkoutInformationPage.clickContinue();
 
-        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage(driver);
+        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage();
         checkoutOverviewPage.clickFinishButton();
 
-        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage(driver);
+        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage();
         String actualFinalText = checkoutCompletePage.getCompleteOrderText();
         Assert.assertEquals(actualFinalText, expectedFinalText);
     }

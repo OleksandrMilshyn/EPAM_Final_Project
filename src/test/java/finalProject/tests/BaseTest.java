@@ -10,25 +10,23 @@ import org.testng.annotations.Parameters;
 
 public class BaseTest {
 
-    protected WebDriver driver;
-
     @BeforeMethod
     @Parameters("browser")
     public void initDriver(String browser){
 
-        driver = DriverFactory.createDriver(browser);
+        DriverFactory.initDriver(browser);
 
-        driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+        DriverFactory.getDriver().manage().window().maximize();
+        DriverFactory.getDriver().get("https://www.saucedemo.com/");
     }
 
     @AfterMethod
     public void quitDriver(){
-        driver.quit();
+        DriverFactory.quitDriver();
     }
 
     protected void login(){
-        new LoginPage(driver).login(ConfigReader.get("login"), ConfigReader.get("password"));
+        new LoginPage().login(ConfigReader.get("login"), ConfigReader.get("password"));
     }
 }
 

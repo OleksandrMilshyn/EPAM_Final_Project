@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class CartPage extends BasePage{
 
-    public CartPage(WebDriver driver) {
-        super(driver);
+    public CartPage() {
+        super(DriverFactory.getDriver());
     }
 
     private By firstItem = By.xpath("//div[text() ='Sauce Labs Backpack']");

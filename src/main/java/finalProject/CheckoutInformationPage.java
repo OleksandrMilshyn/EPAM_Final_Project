@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class CheckoutInformationPage extends BasePage{
 
-    public CheckoutInformationPage(WebDriver driver) {
-        super(driver);
+    public CheckoutInformationPage() {
+        super(DriverFactory.getDriver());
     }
 
     private By firstNameField = By.cssSelector("[id='first-name']");

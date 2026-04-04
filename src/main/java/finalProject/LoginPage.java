@@ -5,8 +5,10 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage{
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    private WebDriver driver;
+
+    public LoginPage() {
+        super(DriverFactory.getDriver());
     }
 
     private By loginField = By.cssSelector("[id ='user-name']");
