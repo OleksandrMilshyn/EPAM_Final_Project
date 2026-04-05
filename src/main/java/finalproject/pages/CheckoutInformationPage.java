@@ -17,13 +17,23 @@ public class CheckoutInformationPage extends BasePage{
 
     private By continueButton = By.cssSelector("[id='continue']");
 
+    private By errorMessage = By.cssSelector("[data-test='error']");
+
     public void fillAllFields(String firstName, String lastName, String postCode){
+        log.info("Fill checkout information");
+
         sendKeys(firstNameField, firstName);
         sendKeys(lastNameField, lastName);
         sendKeys(postCodeField, postCode);
     }
 
     public void clickContinue(){
+        log.info("Continue to overview");
+
         click(continueButton);
+    }
+
+    public String getErrorMessage() {
+        return getText(errorMessage);
     }
 }

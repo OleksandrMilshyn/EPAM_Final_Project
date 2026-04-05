@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 
 import java.util.List;
 
-public class OrderTest{
+public class PositiveTests {
 
     String expectedFirstName = "Sauce Labs Backpack";
     String expectedSecondName = "Sauce Labs Bike Light";

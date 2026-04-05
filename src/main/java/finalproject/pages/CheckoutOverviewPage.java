@@ -18,6 +18,8 @@ public class CheckoutOverviewPage extends BasePage{
     private By totalSumField = By.cssSelector("[data-test='subtotal-label']");
 
     public void clickFinishButton(){
+        log.info("Finish order");
+
         click(finishButton);
     }
 

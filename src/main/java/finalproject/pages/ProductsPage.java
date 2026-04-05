@@ -16,14 +16,20 @@ public class ProductsPage extends BasePage{
     private By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
 
     public void addSauceLabsBackpack(){
+        log.info("Add Sauce Labs Backpack");
+
         click(addToCartFirstItemButton);
     }
 
     public void addSauceLabsBikeLight(){
+        log.info("Add Sauce Labs Bike Light");
+
         click(addToCartSecondItemButton);
     }
 
     public void openCart(){
+        log.info("Open cart");
+
         click(cartButton);
     }
 }

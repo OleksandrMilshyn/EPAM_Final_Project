@@ -19,6 +19,8 @@ public class LoginPage extends BasePage{
 
     private By loginButton = By.cssSelector("[id='login-button']");
 
+    private By errorMessage = By.cssSelector("[data-test='error']");
+
     public void userName(String login){
         sendKeys(loginField, login);
     }
@@ -27,15 +29,25 @@ public class LoginPage extends BasePage{
         sendKeys(passwordField, password);
     }
 
-    private void clickLoginButton(){
+    public void clickLoginButton(){
+        log.info("Click login button");
+
         click(loginButton);
     }
 
     public ProductsPage loginAsDefaultUser(){
+        log.info("Login with default user");
+
         userName(ConfigReader.get("login"));
         userPassword(ConfigReader.get("password"));
         clickLoginButton();
 
+        log.info("Login successful, opening Products page");
+
         return new ProductsPage();
+    }
+
+    public String getErrorMessage() {
+        return getText(errorMessage);
     }
 }

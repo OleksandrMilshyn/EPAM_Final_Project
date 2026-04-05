@@ -24,6 +24,8 @@ public class CartPage extends BasePage{
     }
 
     public void clickCheckout(){
+        log.info("Proceed to checkout");
+
         click(checkoutButton);
     }
 }
