@@ -38,7 +38,7 @@ public class OrderTest{
                 .loginAsDefaultUser();
 
         productsPage.addSauceLabsBackpack();
-        productsPage.toCart();
+        productsPage.openCart();
 
         CartPage cartPage = new CartPage();
         String actualName = cartPage.getFirstProductName();
@@ -52,7 +52,7 @@ public class OrderTest{
                 .loginAsDefaultUser();
 
         productsPage.addSauceLabsBackpack();
-        productsPage.toCart();
+        productsPage.openCart();
 
         CartPage cartPage = new CartPage();
         cartPage.clickCheckout();
@@ -77,7 +77,7 @@ public class OrderTest{
 
         productsPage.addSauceLabsBackpack();
         productsPage.addSauceLabsBikeLight();
-        productsPage.toCart();
+        productsPage.openCart();
 
         CartPage cartPage = new CartPage();
         String actualFirstName = cartPage.getFirstProductName();
@@ -96,7 +96,7 @@ public class OrderTest{
 
         productsPage.addSauceLabsBackpack();
         productsPage.addSauceLabsBikeLight();
-        productsPage.toCart();
+        productsPage.openCart();
 
         CartPage cartPage = new CartPage();
         cartPage.clickCheckout();
@@ -117,7 +117,7 @@ public class OrderTest{
 
         productsPage.addSauceLabsBackpack();
         productsPage.addSauceLabsBikeLight();
-        productsPage.toCart();
+        productsPage.openCart();
 
         CartPage cartPage = new CartPage();
         cartPage.clickCheckout();

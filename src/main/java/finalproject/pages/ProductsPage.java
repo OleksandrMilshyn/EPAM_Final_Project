@@ -23,7 +23,7 @@ public class ProductsPage extends BasePage{
         click(addToCartSecondItemButton);
     }
 
-    public void toCart(){
+    public void openCart(){
         click(cartButton);
     }
 }
