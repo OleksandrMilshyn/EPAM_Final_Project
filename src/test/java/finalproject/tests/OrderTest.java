@@ -16,10 +16,12 @@ public class OrderTest{
     String myPostCode = "00-444";
     String expectedFinalText = "Thank you for your order!";
 
-    @BeforeMethod
     @Parameters("browser")
+    @BeforeMethod
     public void setUp(String browser) {
+
         DriverManager.start(browser);
+
         DriverManager.getDriver().manage().window().maximize();
         DriverManager.getDriver().get("https://www.saucedemo.com/");
     }
