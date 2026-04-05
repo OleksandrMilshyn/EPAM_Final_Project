@@ -11,7 +11,7 @@ public class CheckoutCompletePage extends BasePage{
 
     private By completeOrderText = By.xpath("//h2[text() = 'Thank you for your order!']");
 
-    public String getCompleteOrderText(){
+    public String getCompleteOrderText() {
         return getText(completeOrderText);
     }
 }

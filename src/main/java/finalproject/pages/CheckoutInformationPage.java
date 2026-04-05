@@ -19,18 +19,18 @@ public class CheckoutInformationPage extends BasePage{
 
     private By errorMessage = By.cssSelector("[data-test='error']");
 
-    public void fillAllFields(String firstName, String lastName, String postCode){
+    public CheckoutInformationPage fillCheckoutInformation(String first, String last, String zip) {
         log.info("Fill checkout information");
-
-        sendKeys(firstNameField, firstName);
-        sendKeys(lastNameField, lastName);
-        sendKeys(postCodeField, postCode);
+        sendKeys(firstNameField, first);
+        sendKeys(lastNameField, last);
+        sendKeys(postCodeField, zip);
+        return this;
     }
 
-    public void clickContinue(){
+    public CheckoutOverviewPage clickContinue() {
         log.info("Continue to overview");
-
         click(continueButton);
+        return new CheckoutOverviewPage();
     }
 
     public String getErrorMessage() {

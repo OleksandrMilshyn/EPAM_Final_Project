@@ -9,27 +9,27 @@ public class ProductsPage extends BasePage{
         super(DriverManager.getDriver());
     }
 
-    private By addToCartFirstItemButton = By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']");
+    private By backpackButton = By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']");
 
-    private By addToCartSecondItemButton = By.cssSelector("[id='add-to-cart-sauce-labs-bike-light']");
+    private By bikeLightButton = By.cssSelector("[id='add-to-cart-sauce-labs-bike-light']");
 
     private By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
 
-    public void addSauceLabsBackpack(){
-        log.info("Add Sauce Labs Backpack");
-
-        click(addToCartFirstItemButton);
+    public ProductsPage addSauceLabsBackpack() {
+        log.info("Add product to cart: Sauce Labs Backpack");
+        click(backpackButton);
+        return this;
     }
 
-    public void addSauceLabsBikeLight(){
-        log.info("Add Sauce Labs Bike Light");
-
-        click(addToCartSecondItemButton);
+    public ProductsPage addSauceLabsBikeLight() {
+        log.info("Add product to cart: Sauce Labs Bike Light");
+        click(bikeLightButton);
+        return this;
     }
 
-    public void openCart(){
+    public CartPage openCart() {
         log.info("Open cart");
-
         click(cartButton);
+        return new CartPage();
     }
 }

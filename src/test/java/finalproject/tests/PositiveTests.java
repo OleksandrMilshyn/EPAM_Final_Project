@@ -32,105 +32,84 @@ public class PositiveTests {
     }
 
     @Test
-    public void verifyProductPresentInCartTest(){
+    public void verifyProductPresentInCartTest() {
 
-        ProductsPage productsPage = new LoginPage()
-                .loginAsDefaultUser();
+        String actualName = new LoginPage()
+                .loginAsDefaultUser()
+                .addSauceLabsBackpack()
+                .openCart()
+                .getFirstProductName();
 
-        productsPage.addSauceLabsBackpack();
-        productsPage.openCart();
-
-        CartPage cartPage = new CartPage();
-        String actualName = cartPage.getFirstProductName();
         Assert.assertEquals(actualName, expectedFirstName);
     }
 
     @Test
-    public void verifyOrderOfProductTest(){
+    public void verifyOrderOfProductTest() {
 
-        ProductsPage productsPage = new LoginPage()
-                .loginAsDefaultUser();
+        String actualFinalText = new LoginPage()
+                .loginAsDefaultUser()
+                .addSauceLabsBackpack()
+                .openCart()
+                .clickCheckout()
+                .fillCheckoutInformation(myFirstName, myLastName, myPostCode)
+                .clickContinue()
+                .clickFinishButton()
+                .getCompleteOrderText();
 
-        productsPage.addSauceLabsBackpack();
-        productsPage.openCart();
-
-        CartPage cartPage = new CartPage();
-        cartPage.clickCheckout();
-
-        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage();
-        checkoutInformationPage.fillAllFields(myFirstName, myLastName, myPostCode);
-        checkoutInformationPage.clickContinue();
-
-        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage();
-        checkoutOverviewPage.clickFinishButton();
-
-        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage();
-        String actualFinalText = checkoutCompletePage.getCompleteOrderText();
         Assert.assertEquals(actualFinalText, expectedFinalText);
     }
 
     @Test
-    public void verifySeveralProductsInCartTest(){
+    public void verifySeveralProductsInCartTest() {
 
-        ProductsPage productsPage = new LoginPage()
-                .loginAsDefaultUser();
+        CartPage cartPage = new LoginPage()
+                .loginAsDefaultUser()
+                .addSauceLabsBackpack()
+                .addSauceLabsBikeLight()
+                .openCart();
 
-        productsPage.addSauceLabsBackpack();
-        productsPage.addSauceLabsBikeLight();
-        productsPage.openCart();
+        List<String> actualResult = List.of(
+                cartPage.getFirstProductName(),
+                cartPage.getSecondProductName()
+        );
 
-        CartPage cartPage = new CartPage();
-        String actualFirstName = cartPage.getFirstProductName();
-        String actualSecondName = cartPage.getSecondProductName();
-
-        List<String> actualResult = List.of(actualFirstName, actualSecondName);
         List<String> expectedResult = List.of(expectedFirstName, expectedSecondName);
+
         Assert.assertEquals(actualResult, expectedResult);
     }
 
     @Test
-    public void verifyTotalPriceTest(){
+    public void verifyTotalPriceTest() {
 
-        ProductsPage productsPage = new LoginPage()
-                .loginAsDefaultUser();
+        CheckoutOverviewPage checkoutOverviewPage = new LoginPage()
+                .loginAsDefaultUser()
+                .addSauceLabsBackpack()
+                .addSauceLabsBikeLight()
+                .openCart()
+                .clickCheckout()
+                .fillCheckoutInformation(myFirstName, myLastName, myPostCode)
+                .clickContinue();
 
-        productsPage.addSauceLabsBackpack();
-        productsPage.addSauceLabsBikeLight();
-        productsPage.openCart();
-
-        CartPage cartPage = new CartPage();
-        cartPage.clickCheckout();
-
-        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage();
-        checkoutInformationPage.fillAllFields(myFirstName, myLastName, myPostCode);
-        checkoutInformationPage.clickContinue();
-
-        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage();
-        Assert.assertEquals(checkoutOverviewPage.sumOfTwoProducts(), checkoutOverviewPage.totalSum());
+        Assert.assertEquals(
+                checkoutOverviewPage.sumOfTwoProducts(),
+                checkoutOverviewPage.totalSum()
+        );
     }
 
     @Test
-    public void verifyOrderOfSeveralProductsTest(){
+    public void verifyOrderOfSeveralProductsTest() {
 
-        ProductsPage productsPage = new LoginPage()
-                .loginAsDefaultUser();
+        String actualFinalText = new LoginPage()
+                .loginAsDefaultUser()
+                .addSauceLabsBackpack()
+                .addSauceLabsBikeLight()
+                .openCart()
+                .clickCheckout()
+                .fillCheckoutInformation(myFirstName, myLastName, myPostCode)
+                .clickContinue()
+                .clickFinishButton()
+                .getCompleteOrderText();
 
-        productsPage.addSauceLabsBackpack();
-        productsPage.addSauceLabsBikeLight();
-        productsPage.openCart();
-
-        CartPage cartPage = new CartPage();
-        cartPage.clickCheckout();
-
-        CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage();
-        checkoutInformationPage.fillAllFields(myFirstName, myLastName, myPostCode);
-        checkoutInformationPage.clickContinue();
-
-        CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage();
-        checkoutOverviewPage.clickFinishButton();
-
-        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage();
-        String actualFinalText = checkoutCompletePage.getCompleteOrderText();
         Assert.assertEquals(actualFinalText, expectedFinalText);
     }
 }

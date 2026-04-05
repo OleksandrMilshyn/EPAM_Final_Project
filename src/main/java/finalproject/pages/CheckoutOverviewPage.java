@@ -17,10 +17,10 @@ public class CheckoutOverviewPage extends BasePage{
 
     private By totalSumField = By.cssSelector("[data-test='subtotal-label']");
 
-    public void clickFinishButton(){
+    public CheckoutCompletePage clickFinishButton() {
         log.info("Finish order");
-
         click(finishButton);
+        return new CheckoutCompletePage();
     }
 
     public double sumOfTwoProducts(){

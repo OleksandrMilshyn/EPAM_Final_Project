@@ -37,6 +37,7 @@ public class NegativeTests {
         loginPage.clickLoginButton();
 
         String actualError = loginPage.getErrorMessage();
+
         Assert.assertTrue(actualError.contains("Username and password do not match"));
     }
 
@@ -56,6 +57,7 @@ public class NegativeTests {
         checkoutInformationPage.clickContinue();
 
         String actualError = checkoutInformationPage.getErrorMessage();
+
         Assert.assertTrue(actualError.contains("Error: First Name is required"));
     }
 
@@ -71,7 +73,7 @@ public class NegativeTests {
         cartPage.clickCheckout();
 
         CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage();
-        checkoutInformationPage.fillAllFields(myFirstName, myLastName, myPostCode);
+        checkoutInformationPage.fillCheckoutInformation(myFirstName, myLastName, myPostCode);
         checkoutInformationPage.clickContinue();
 
         CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage();

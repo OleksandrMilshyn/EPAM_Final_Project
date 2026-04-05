@@ -21,18 +21,20 @@ public class LoginPage extends BasePage{
 
     private By errorMessage = By.cssSelector("[data-test='error']");
 
-    public void userName(String login){
+    public LoginPage userName(String login){
         sendKeys(loginField, login);
+        return this;
     }
 
-    public void userPassword(String password){
+    public LoginPage userPassword(String password){
         sendKeys(passwordField, password);
+        return this;
     }
 
-    public void clickLoginButton(){
+    public LoginPage clickLoginButton(){
         log.info("Click login button");
-
         click(loginButton);
+        return this;
     }
 
     public ProductsPage loginAsDefaultUser(){
