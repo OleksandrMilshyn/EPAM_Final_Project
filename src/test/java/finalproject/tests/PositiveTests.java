@@ -21,7 +21,6 @@ public class PositiveTests {
     public void setUp(String browser) {
 
         DriverManager.start(browser);
-
         DriverManager.getDriver().manage().window().maximize();
         DriverManager.getDriver().get("https://www.saucedemo.com/");
     }
@@ -70,8 +69,7 @@ public class PositiveTests {
 
         List<String> actualResult = List.of(
                 cartPage.getFirstProductName(),
-                cartPage.getSecondProductName()
-        );
+                cartPage.getSecondProductName());
 
         List<String> expectedResult = List.of(expectedFirstName, expectedSecondName);
 
@@ -92,8 +90,7 @@ public class PositiveTests {
 
         Assert.assertEquals(
                 checkoutOverviewPage.sumOfTwoProducts(),
-                checkoutOverviewPage.totalSum()
-        );
+                checkoutOverviewPage.totalSum());
     }
 
     @Test

@@ -18,7 +18,6 @@ public class NegativeTests {
     public void setUp(String browser) {
 
         DriverManager.start(browser);
-
         DriverManager.getDriver().manage().window().maximize();
         DriverManager.getDriver().get("https://www.saucedemo.com/");
     }

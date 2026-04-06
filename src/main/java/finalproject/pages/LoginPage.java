@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends BasePage{
 
-    private WebDriver driver;
-
     public LoginPage() {
         super(DriverManager.getDriver());
     }
